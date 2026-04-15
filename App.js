@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, Text, TextInput, View, Button, SafeAreaView } from 'react-native';
-import RenderizarDados from './components/RenderizarDados';
+import RenderizarDados from './src/components/RenderizarDados';
 
 export default function App() {
   const [nomeAluno, setNomeAluno] = useState('');
