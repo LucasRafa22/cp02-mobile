@@ -72,13 +72,13 @@ O aplicativo foi desenvolvido como evolução do **Checkpoint 01 (CP1)**, incorp
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/LucasRafa22/cp02-mobile.git
 ```
 
 2. Acesse a pasta do projeto:
 
 ```bash
-cd nome-do-projeto
+cd cp02-mobile
 ```
 
 3. Instale as dependências:
