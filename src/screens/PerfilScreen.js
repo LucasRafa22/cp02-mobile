@@ -2,17 +2,18 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import aluno from '../../assets/aluno.png';
 
 export default function PerfilScreen({ route }) {
-  const { nome } = route.params;
+  const { nome, curso } = route.params;
 
   return (
     <View style={styles.container}>
       <Text style={styles.nome}>{nome}</Text>
 
       <Image
-      source={aluno}
-      style={styles.foto}
+        source={aluno}
+        style={styles.foto}
       />
 
+      <Text style={styles.info}>Curso: {curso}</Text>
       <Text style={styles.rm}>RM: 565194</Text>
     </View>
   );
@@ -35,6 +36,10 @@ const styles = StyleSheet.create({
     height: 140,
     borderRadius: 70,
     marginBottom: 20
+  },
+  info: {
+    fontSize: 18,
+    marginBottom: 10
   },
   rm: {
     fontSize: 18

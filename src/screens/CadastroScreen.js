@@ -1,5 +1,14 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, TextInput, View, Button, SafeAreaView, Alert } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Button,
+  SafeAreaView,
+  Alert
+} from 'react-native';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaskedTextInput } from 'react-native-mask-text';
 
@@ -13,17 +22,21 @@ export default function CadastroScreen({ navigation }) {
 
   useEffect(() => {
     async function carregarDados() {
-      const dados = await AsyncStorage.getItem("usuario");
+      try {
+        const dados = await AsyncStorage.getItem('usuario');
 
-      if (dados) {
-        const obj = JSON.parse(dados);
+        if (dados) {
+          const obj = JSON.parse(dados);
 
-        setNomeAluno(obj.nomeAluno);
-        setCursoAluno(obj.cursoAluno);
-        setDisciplinaAluno(obj.disciplinaAluno);
-        setDescricaoAluno(obj.descricaoAluno);
-        setCpf(obj.cpf);
-        setTelefone(obj.telefone);
+          setNomeAluno(obj.nomeAluno);
+          setCursoAluno(obj.cursoAluno);
+          setDisciplinaAluno(obj.disciplinaAluno);
+          setDescricaoAluno(obj.descricaoAluno);
+          setCpf(obj.cpf);
+          setTelefone(obj.telefone);
+        }
+      } catch (error) {
+        console.log('Erro ao carregar dados');
       }
     }
 
@@ -32,14 +45,14 @@ export default function CadastroScreen({ navigation }) {
 
   const handleSubmit = async () => {
     if (
-      !nomeAluno ||
-      !cursoAluno ||
-      !disciplinaAluno ||
-      !descricaoAluno ||
+      !nomeAluno.trim() ||
+      !cursoAluno.trim() ||
+      !disciplinaAluno.trim() ||
+      !descricaoAluno.trim() ||
       !cpf ||
       !telefone
     ) {
-      Alert.alert("Erro", "Preencha todos os campos!");
+      Alert.alert('Erro', 'Preencha todos os campos!');
       return;
     }
 
@@ -52,11 +65,16 @@ export default function CadastroScreen({ navigation }) {
       telefone
     };
 
-    await AsyncStorage.setItem("usuario", JSON.stringify(dados));
+    try {
+      await AsyncStorage.setItem('usuario', JSON.stringify(dados));
 
-    navigation.navigate("Perfil", {
-      nome: nomeAluno
-    });
+      navigation.navigate('Perfil', {
+        nome: nomeAluno,
+        curso: cursoAluno
+      });
+    } catch (error) {
+      Alert.alert('Erro', 'Erro ao salvar dados');
+    }
   };
 
   return (
@@ -65,35 +83,34 @@ export default function CadastroScreen({ navigation }) {
         <Text style={styles.title}>Registro Acadêmico</Text>
 
         <TextInput
-          placeholder='Nome do Aluno'
+          placeholder="Nome do Aluno"
           value={nomeAluno}
           onChangeText={setNomeAluno}
           style={styles.input}
         />
 
         <TextInput
-          placeholder='Curso'
+          placeholder="Curso"
           value={cursoAluno}
           onChangeText={setCursoAluno}
           style={styles.input}
         />
 
         <TextInput
-          placeholder='Disciplina'
+          placeholder="Disciplina"
           value={disciplinaAluno}
           onChangeText={setDisciplinaAluno}
           style={styles.input}
         />
 
         <TextInput
-          placeholder='Descrição'
+          placeholder="Descrição"
           value={descricaoAluno}
           onChangeText={setDescricaoAluno}
           style={[styles.input, styles.textArea]}
           multiline
         />
 
-        {/* CPF */}
         <MaskedTextInput
           mask="999.999.999-99"
           value={cpf}
@@ -102,7 +119,6 @@ export default function CadastroScreen({ navigation }) {
           placeholder="CPF"
         />
 
-        {/* Telefone */}
         <MaskedTextInput
           mask="(99) 99999-9999"
           value={telefone}
@@ -120,26 +136,26 @@ export default function CadastroScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    backgroundColor: '#f8f9fa' 
+  container: {
+    flex: 1,
+    backgroundColor: '#f8f9fa'
   },
-  content: { 
-    flex: 1, 
-    padding: 20, 
-    justifyContent: 'center' 
+  content: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center'
   },
-  title: { 
-    fontSize: 26, 
-    fontWeight: 'bold', 
-    textAlign: 'center', 
-    marginBottom: 30, 
-    color: '#2c3e50' 
+  title: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 30,
+    color: '#2c3e50'
   },
-  input: { 
-    borderBottomWidth: 1, 
+  input: {
+    borderBottomWidth: 1,
     borderBottomColor: '#bdc3c7',
-    marginBottom: 20, 
+    marginBottom: 20,
     padding: 10,
     fontSize: 16
   },
