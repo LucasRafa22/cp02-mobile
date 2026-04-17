@@ -1,74 +1,73 @@
-# 📱 Registro Acadêmico - React Native
+# 📱 CP2 - Aplicativo Mobile (Registro Acadêmico)
 
-Aplicativo desenvolvido em React Native como parte do **Checkpoint 01** da disciplina de Mobile Application Development.
+## 👨‍💻 Integrante
 
-O objetivo do projeto é criar um formulário simples onde o usuário preenche seus dados acadêmicos e visualiza as informações na própria tela após o envio.
+* **Lucas Rafael Solimene**
+* **RM: 565194**
+
+---
+
+## 🎯 Descrição do Projeto
+
+Este projeto consiste no desenvolvimento de um aplicativo mobile utilizando **React Native com Expo**, com o objetivo de registrar e exibir dados acadêmicos de um aluno.
+
+O aplicativo foi desenvolvido como evolução do **Checkpoint 01 (CP1)**, incorporando novos conceitos como navegação entre telas, validação de formulário, persistência de dados e uso de máscaras de entrada.
 
 ---
 
 ## 🚀 Funcionalidades
 
-* 📌 Formulário com os campos:
+### 📄 Tela de Cadastro
+
+* Formulário com os campos:
 
   * Nome do aluno
   * Curso
   * Disciplina
   * Descrição
+  * CPF (com máscara)
+  * Telefone (com máscara)
 
-* ✅ Validação dos campos (todos obrigatórios)
+* Validação:
 
-* 🎨 Botão dinâmico (ativo apenas quando todos os campos estão preenchidos)
+  * Todos os campos são obrigatórios
+  * Exibição de alerta caso algum campo esteja vazio
 
-* 📊 Exibição dos dados preenchidos na tela
+* Persistência:
 
-* 🔄 Atualização automática ao editar os campos
+  * Os dados são salvos localmente utilizando **AsyncStorage**
 
 ---
 
-## 🧠 Conceitos Utilizados
+### 👤 Tela de Perfil
+
+* Exibe:
+
+  * Nome do aluno
+  * Curso
+  * Foto do aluno
+  * RM
+
+---
+
+### 🔄 Persistência de Dados
+
+* Os dados são armazenados localmente
+* Ao reabrir o aplicativo, o formulário já aparece preenchido automaticamente
+
+---
+
+## 🛠️ Tecnologias Utilizadas
 
 * React Native
-* Hooks:
-
-  * `useState`
-  * `useEffect`
-* Componentização
-* Estilização com `StyleSheet`
+* Expo
+* React Navigation
+* AsyncStorage
+* react-native-mask-text
 
 ---
 
-## 📂 Estrutura do Projeto
-
-```
-📁 projeto
- ┣ 📂 components
- ┃ ┗ 📄 RenderizarDados.js
- ┣ 📄 App.js
- ┗ 📄 README.md
-```
-
----
-
-## 📱 Funcionamento do App
-
-1. O usuário abre o aplicativo
-2. O formulário é exibido
-3. O usuário preenche os dados
-4. O botão é habilitado automaticamente
-5. Ao clicar em **"Confirmar Dados"**, as informações aparecem na tela
-
----
-
-## 🎨 Interface
-
-* Layout centralizado
-* Campos organizados em formulário
-* Feedback visual no botão (ativo/inativo)
-* Exibição destacada dos dados
-
----
-
-## ▶️ Como Executar o Projeto
+## 📦 Instalação e Execução
 
 1. Clone o repositório:
 
@@ -79,7 +78,7 @@ git clone https://github.com/seu-usuario/seu-repositorio.git
 2. Acesse a pasta do projeto:
 
 ```bash
-cd seu-repositorio
+cd nome-do-projeto
 ```
 
 3. Instale as dependências:
@@ -91,24 +90,25 @@ npm install
 4. Execute o projeto:
 
 ```bash
-npm start
+npx expo start
 ```
+
+---
+
+## 🧪 Testes Realizados
+
+* Navegação entre telas funcionando corretamente
+* Validação de formulário impedindo envio com campos vazios
+* Máscaras aplicadas corretamente em CPF e telefone
+* Dados salvos e recuperados com AsyncStorage
+* Formulário preenchido automaticamente ao reabrir o app
 
 ---
 
 ## 🎥 Demonstração
 
-📌 Adicione aqui o link do vídeo demonstrando o funcionamento do app.
+📌 Vídeo demonstrando o funcionamento do aplicativo:
+Link: https://www.youtube.com/shorts/siXWP-2mtSk
 
----
-
-## 👨‍💻 Autor
-
-* Lucas Rafael Solimene
-* RM: 565194
-
----
-
-## 📌 Observações
-
-Este projeto foi desenvolvido com fins acadêmicos para avaliação prática de conceitos básicos de desenvolvimento mobile com React Native.
+📌 Projeto GitHub:
+Link: https://github.com/LucasRafa22/cp02-mobile
